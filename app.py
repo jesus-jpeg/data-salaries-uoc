@@ -35,14 +35,14 @@ h1, h2, h3, h4, h5, h6, p, label, span, div {{
 
 /* Inputs */
 .stTextInput input, .stNumberInput input, .stDateInput input {{
-    background: rgba(255,255,255,0.85) !important;
+    background: #ffffff !important;
     color: {UOC_TEXT} !important;
     border: 1px solid {UOC_TEXT}33 !important;
     border-radius: 10px !important;
 }}
 
 .stSelectbox div[data-baseweb="select"] > div {{
-    background: rgba(255,255,255,0.85) !important;
+    background: #ffffff !important;
     color: {UOC_TEXT} !important;
     border: 1px solid {UOC_TEXT}33 !important;
     border-radius: 10px !important;
@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6, p, label, span, div {{
 /* Botón */
 .stButton button, .stFormSubmitButton button {{
     background: {UOC_TEXT} !important;
-    color: white !important;
+    color: #ffffff !important;
     border-radius: 12px !important;
     border: none !important;
     padding: 0.6rem 1rem !important;
@@ -113,8 +113,8 @@ CIUDADES_POR_PAIS = {
     "Otro": ["Otro"]
 }
 
-EXPERIENCIAS = ["Junior", "Mid", "Senior"]
-POSICIONES = ["Data Analyst", "Data Engineer", "Data Scientist"]
+EXPERIENCIAS = ["Intern","Junior", "Mid", "Senior", "Expert"]
+POSICIONES = ["Data Scientist", "Data Engineer", "Machine Learning Engineer", "Data Analyst", "Business Intelligence Analyst", "AI Engineer"]
 
 # =====================
 # FUNCIONES
@@ -168,7 +168,7 @@ def save_contact(
     OJO: la tabla debe tener columnas: empresa, posicion, experiencia.
     """
     sql = """
-    INSERT INTO contactos (
+    INSERT INTO salaries (
         id, nombre, email, fecha_nacimiento,
         salario_bruto, pais, ciudad,
         experiencia, empresa, posicion,
@@ -243,10 +243,13 @@ with c2:
         salario_str = st.text_input(
             "Salario bruto anual (€)*",
             placeholder="Ej: 35000 o 35000,00"
-        )
+       	)
 
-        pais = st.selectbox("País*", options=PAISES, index=0)
-        ciudad = st.selectbox("Ciudad*", options=CIUDADES_POR_PAIS.get(pais, ["Otro"]), index=0)
+        pais = st.selectbox("País*", options=PAISES, key="pais")
+        ciudades_disp = CIUDADES_POR_PAIS.get(pais, ["Otro"])
+        if st.session_state.get("ciudad") not in ciudades_disp:
+            st.session_state["ciudad"] = ciudades_disp[0]
+        ciudad = st.selectbox("Ciudad*", options=ciudades_disp, key="ciudad")
 
         experiencia = st.selectbox("Experiencia*", options=EXPERIENCIAS, index=0)
 

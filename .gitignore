@@ -129,7 +129,6 @@ pip-delete-this-directory.txt
 pip-log.txt
 profile_default/
 sdist/
-secrets.toml
 share/python-wheels/
 target/
 var/
