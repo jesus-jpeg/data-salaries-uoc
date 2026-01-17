@@ -132,6 +132,61 @@ div[data-baseweb="calendar"] * {{
 #MainMenu {{ visibility: hidden; }}
 footer {{ visibility: hidden; }}
 header {{ visibility: hidden; }}
+
+/* =========================
+   FORZAR BLANCO EN BASEWEB
+   (quita amarillos por defecto)
+   ========================= */
+
+/* Fondo de popovers (select abierto, datepicker, etc.) */
+div[data-baseweb="popover"] {
+    background-color: #ffffff !important;
+}
+
+/* Menú desplegable */
+div[data-baseweb="menu"] {
+    background-color: #ffffff !important;
+}
+
+/* Opciones */
+div[data-baseweb="option"] {
+    background-color: #ffffff !important;
+    color: #000078 !important;
+}
+
+/* Hover de opciones */
+div[data-baseweb="option"]:hover,
+div[data-baseweb="option"][aria-selected="true"] {
+    background-color: #e6f9ff !important;
+}
+
+/* Estado focus / active (el amarillo molesto) */
+div[data-baseweb="select"] *:focus,
+div[data-baseweb="select"] *:active {
+    background-color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+/* Datepicker popup */
+div[role="dialog"] {
+    background-color: #ffffff !important;
+}
+
+/* Calendario */
+div[data-baseweb="calendar"] {
+    background-color: #ffffff !important;
+}
+
+div[data-baseweb="calendar"] * {
+    background-color: #ffffff !important;
+    color: #000078 !important;
+}
+
+/* Quitar highlight amarillo inicial */
+*:focus-visible {
+    outline: none !important;
+}
+
 </style>
 """
 st.markdown(uoc_css, unsafe_allow_html=True)
