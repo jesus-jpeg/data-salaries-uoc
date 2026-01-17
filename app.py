@@ -289,7 +289,9 @@ with c2:
         # 2) Fecha nacimiento / Salario
         fecha_nacimiento = st.date_input(
             "Fecha de nacimiento",
-            value=None,
+            value=date(2000, 1, 1),
+            min_value=date(1950, 1, 1),
+            max_value=date.today(),
             format="DD/MM/YYYY",
             key="fecha_nacimiento"
         )
