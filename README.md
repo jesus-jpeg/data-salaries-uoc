@@ -1,6 +1,7 @@
 # Formulario de recopilación de datos
 
 Esta es una aplicación diseñada para recopilar datos mediante un formulario en Streamlit usando AWS.
+<img width="2448" height="1522" alt="image" src="https://github.com/user-attachments/assets/c4b996a9-78c6-4f46-b632-063d2d624aab" />
 
 
 ## Instalación
